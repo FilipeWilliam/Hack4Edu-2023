@@ -1,4 +1,6 @@
-![alt text](https://github.com/FilipeWilliam/Hack4Edu-2023/tree/master/docs/imagens/imagem.png)
+<p align="center">
+  <img src="https://github.com/FilipeWilliam/Hack4Edu-2023/tree/master/docs/imagens/imagem.png" width="350" title="hover text">
+</p>
 
 # Hack4edu-2023
 
