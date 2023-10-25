@@ -31,6 +31,9 @@ Hackathon Hack4edu, 4ª edição. Hackathon internacional sobre educação digit
 ## Termos relacionados e temas de pesquisa
 * Conversational gamification
 * Software de indexação e busca sobre textos: Apache SOLR
+* Metodologia para Aprendizagem Baseada em Projetos (ABP)
+* Chatgpt / Bart
+* Redes Neurais (RN)
 
 <br>
 
@@ -46,6 +49,9 @@ https://www.deeplearningbook.com.br/as-10-principais-arquiteturas-de-redes-neura
 
 * AUTOMAÇÃO INDUSTRIAL - Redes Neurais artificiais: como funcionam? Exemplos de usos
 https://blog.kalatec.com.br/redes-neurais/
+
+* SILVA, Ivan N.; SPATTI, Danilo H.; FLAUZINO, Rogério A. "Redes Neurais artificiais: para engenharia e ciências aplicadas". Editora Artliber, São Paulo, 2010. 
+
 
 <br>
 
