@@ -37,6 +37,8 @@ model Subjects {
   institutionId Int
   institution   Institutions @relation(fields: [institutionId], references: [id])
   name          String
+  icon          String?
+  color         String?
   UserSubject   UserSubjects[]
   Task          Tasks[]
 }
@@ -104,4 +106,17 @@ model UserTaskQuestions {
   startedAt     DateTime?            @db.Timestamptz(3)
   finishedAt    DateTime?           @db.Timestamptz(3)
   focusOut      Int                 @default(0)
+}
+
+model GptQuestions {
+  id                  Int                   @id @default(autoincrement())
+  active              Boolean               @default(true)
+  createdAt           DateTime              @default(now()) @db.Timestamptz(3)
+  title               String
+  level               Int
+  alternative1        String
+  alternative2        String
+  alternative3        String
+  alternative4        String
+  correctAlternative  Int
 }

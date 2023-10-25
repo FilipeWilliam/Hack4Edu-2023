@@ -15,7 +15,9 @@ export class ListUserTasksService {
               id: true,
               subject: {
                 select: {
-                  name: true
+                  name: true,
+                  icon: true,
+                  color: true
                 }
               },
               periodEnd: true,

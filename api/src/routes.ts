@@ -21,6 +21,8 @@ import { ListUserTasksController } from "./routes/userTasks/list/ListUserTasksCo
 import { ReadTasksController } from "./routes/tasks/read/ReadTasksController";
 import { ListRankingController } from "./routes/ranking/ListRankingController";
 import { ListTasksController } from "./routes/tasks/list/ListTasksController";
+import { UpdateSubjectController } from "./routes/subjects/update/UpdateSubjectController";
+import { ReadSubjectsController } from "./routes/subjects/read/ReadSubjectsController";
 
 const router = Router();
 
@@ -44,7 +46,9 @@ router.get("/institutions", [ensureAuth, ensureSystemAdmin], new ListInstitution
 router.delete("/institutions/:id", [ensureAuth, ensureSystemAdmin], new DeleteInstitutionController().handle);
 
 //Subjects
+router.get("/subjects/:id", ensureAuth, new ReadSubjectsController().handle);
 router.post("/subjects", ensureAuth, new CreateSubjectController().handle);
+router.put("/subjects/:id", ensureAuth, new UpdateSubjectController().handle);
 
 //Tasks
 router.get("/tasks", [ensureAuth], new ListTasksController().handle);
