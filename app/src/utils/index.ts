@@ -20,8 +20,8 @@ export function catchErrorDefault(error: any) {
     return;
   }
 
-  if (error.response?.data?.message) {
-    useAppStore().setSnackbar(error.response.data.message);
+  if (error.response?.data?.error) {
+    useAppStore().setSnackbar(error.response.data.error);
   } else {
     useAppStore().setSnackbar(
       "Ocorreu um erro desconhecido. Por favor, recarregue a página e tente novamente. Se o erro persistir, entre em contato com o suporte."

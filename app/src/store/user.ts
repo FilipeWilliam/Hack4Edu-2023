@@ -3,9 +3,10 @@ import { defineStore } from "pinia";
 
 export const enum userTypes {
   System = 1,
-  Admin = 2,
-  Teacher = 3,
-  Student = 4,
+  SystemAdmin = 2,
+  Admin = 3,
+  Teacher = 4,
+  Student = 5,
 }
 
 export const useUserStore = defineStore("user", {

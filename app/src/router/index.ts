@@ -32,9 +32,22 @@ const routes = [
               menuIcon: 'mdi-view-dashboard',
               menuLabel: 'Dashboard',
               permission: [
+                userTypes.SystemAdmin,
                 userTypes.Admin,
                 userTypes.Teacher,
                 userTypes.Student,
+              ],
+            }
+          },
+          {
+            path: '/institutions',
+            name: 'Institutions',
+            component: () => import(/* webpackChunkName: "tasks" */ '@/views/Tasks.vue'),
+            meta: {
+              menuIcon: 'mdi-domain',
+              menuLabel: 'Instituições',
+              permission: [
+                userTypes.SystemAdmin,
               ],
             }
           },
@@ -52,24 +65,33 @@ const routes = [
             }
           },
           {
-            path: '/user-tasks',
+            path: '/tasks/:id',
             name: 'UserTask',
             component: () => import(/* webpackChunkName: "tasks" */ '@/views/UserTask.vue'),
             meta: {
-              menuIcon: 'mdi-file-question',
-              menuLabel: 'Tarefa',
               permission: [
                 userTypes.Student,
               ],
             }
           },
           {
-            path: '/question',
-            name: 'Question',
-            component: () => import(/* webpackChunkName: "question" */ '@/views/QuestionRegister.vue'),
+            path: '/tasks/new',
+            name: 'UserTask',
+            component: () => import(/* webpackChunkName: "question" */ '@/views/TaskRegister.vue'),
             meta: {
-              menuIcon: 'mdi-pencil',
-              menuLabel: 'Questões',
+              permission: [
+                userTypes.Teacher,
+              ],
+            }
+          },
+          {
+            path: '/tasks/:id',
+            name: 'UserTaskEdit',
+            component: () => import(/* webpackChunkName: "question" */ '@/views/TaskRegister.vue'),
+            meta: {
+              permission: [
+                userTypes.Teacher,
+              ],
             }
           },
         ]

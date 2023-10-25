@@ -4,7 +4,7 @@
 
     <v-spacer></v-spacer>
 
-    <v-btn>Sair</v-btn>
+    <v-btn @click="signOut">Sair</v-btn>
   </v-app-bar>
 
   <v-navigation-drawer color="secondary" v-model="drawer.open" permanent :rail="drawer.rail">
@@ -23,18 +23,26 @@
 
 <script lang="ts" setup>
 import router from '@/router';
+import { useAppStore } from '@/store/app';
 import { ref } from 'vue';
 
+let appStore = useAppStore();
 let allRoutes = router.getRoutes();
 let loggedRoutes = allRoutes.find((route) => route.name === 'Home')!.children;
+let currentPermissionRoutes = loggedRoutes.filter((route) => (route.meta?.permission as Array<any>)?.includes((appStore.appUser as any).type) && route.meta?.menuIcon);
 
 const drawer = ref({
   open: true,
   rail: false,
   menus: [
-    ...loggedRoutes
+    ...currentPermissionRoutes
   ]
 })
+
+let signOut = () => {
+  appStore.signOut();
+  router.push('/login');
+}
 
 </script>
 

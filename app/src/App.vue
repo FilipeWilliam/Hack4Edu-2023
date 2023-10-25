@@ -11,3 +11,9 @@ import { useAppStore } from './store/app';
 
 const appStore = useAppStore();
 </script>
+
+<style>
+.v-card {
+  background-color: #FFF !important;
+}
+</style>

@@ -37,7 +37,7 @@ export default defineComponent({
         options.value.limit = apiParams.itemsPerPage;
 
         props.getData!()
-          .then((response: any) => totalApiResults.value = response.length)
+          .then((response: any) => totalApiResults.value = response.total)
           .catch(catchErrorDefault)
           .finally(() => loading.value = false);
       }, 100);
