@@ -19,6 +19,8 @@ import { CreateUserSubjectsController } from "./routes/userSubjects/create/Creat
 import { CreateUserTaskQuestionsController } from "./routes/userTaskQuestions/create/CreateUserTaskQuestionsController";
 import { ListUserTasksController } from "./routes/userTasks/list/ListUserTasksController";
 import { ReadTasksController } from "./routes/tasks/read/ReadTasksController";
+import { ListRankingController } from "./routes/ranking/ListRankingController";
+import { ListTasksController } from "./routes/tasks/list/ListTasksController";
 
 const router = Router();
 
@@ -45,6 +47,7 @@ router.delete("/institutions/:id", [ensureAuth, ensureSystemAdmin], new DeleteIn
 router.post("/subjects", ensureAuth, new CreateSubjectController().handle);
 
 //Tasks
+router.get("/tasks", [ensureAuth], new ListTasksController().handle);
 router.get("/tasks/:id", new ReadTasksController().handle);
 router.post("/tasks", ensureAuth, new CreateTaskController().handle);
 
@@ -59,5 +62,8 @@ router.get("/user-tasks", new ListUserTasksController().handle);
 
 //UserTaskQuestions
 router.post("/user-task/:userTaskId/questions", new CreateUserTaskQuestionsController().handle);
+
+//Ranking
+router.get("/ranking", new ListRankingController().handle);
 
 export { router };

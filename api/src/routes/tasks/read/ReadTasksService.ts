@@ -8,6 +8,8 @@ export class ReadTasksService {
           id,
         },
         select: {
+          periodEnd: true,
+          periodStart: true,
           questions: {
             select: {
               id: true,
@@ -17,6 +19,7 @@ export class ReadTasksService {
               alternative3: true,
               alternative4: true,
               correctAlternative: true,
+              level: true,
             }
           }
         }

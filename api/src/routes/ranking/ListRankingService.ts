@@ -1,7 +1,7 @@
 import prismaClient from "@/prisma";
 
 export class ListRankingService {
-	async execute(subjectId?: number) {
+	async execute(subjectId?: string) {
 		try {
 			let result: any = [];
 
@@ -9,18 +9,18 @@ export class ListRankingService {
 				let allUserTasks = await prismaClient.userTasks.findMany({
 					where: {
 						task: {
-							subjectId
+							subjectId: +subjectId
 						}
 					},
 				});	
 
 				for (let item of allUserTasks) {
-					let currentUser = result.find(i => i.userId === item.userId);
+					let currentUser = result.find(i => i?.userId === item.userId);
 
 					if (currentUser !== undefined) {
 						currentUser.score += item.score;
 					} else {
-						result.push(currentUser);
+						result.push(item);
 					}
 				}
 			} else {

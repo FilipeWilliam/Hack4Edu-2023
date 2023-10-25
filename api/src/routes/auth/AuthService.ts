@@ -8,6 +8,9 @@ class AuthService {
       where: {
         email,
       },
+      include: {
+        UserSubject: true
+      }
     });
 
     if (!user) {
@@ -27,6 +30,7 @@ class AuthService {
           name: user.name,
           email: user.email,
           type: user.type,
+          subjectId: user.UserSubject[0].subjectId
         }
       },
       process.env.JWT_SECRET,

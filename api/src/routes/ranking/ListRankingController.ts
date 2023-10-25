@@ -4,7 +4,7 @@ import { handleErrorDefault, handleResult } from '@/utils';
 
 export class ListRankingController {
 	async handle(req: Request, res: Response) {
-		const { subjectId } = req.body;
+		const { subjectId } = req.query;
     const service = new ListRankingService();
 
     try {

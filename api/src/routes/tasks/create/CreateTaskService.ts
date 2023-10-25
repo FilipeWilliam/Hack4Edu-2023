@@ -1,9 +1,10 @@
 import { UserTypes } from "../../../enums";
 import prismaClient from "@/prisma";
+import { CreateQuestionService } from "@/routes/questions/create/CreateQuestionService";
 import { CreateUserTaskService } from "@/routes/userTasks/create/CreateUserTaskService";
 
 export class CreateTaskService {
-  async execute(periodStart: string, periodEnd: string, subjectId: number) {
+  async execute(periodStart: string, periodEnd: string, subjectId: number, questions?: Array<any>) {
     try {
       let result = await prismaClient.tasks.create({
         data: {
@@ -15,7 +16,7 @@ export class CreateTaskService {
 
       let allCurrentSubjectStudents = await prismaClient.userSubjects.findMany({
         where: {
-          id: subjectId,
+          subjectId,
           user: {
             type: UserTypes.Student
           },
@@ -33,9 +34,21 @@ export class CreateTaskService {
         }
       }
 
+      if (questions !== undefined) {
+        await this.registerTaskQuestions(questions, result.id);
+      }
+
       return { result };
     } catch (error) {
       console.log(error);
+    }
+  }
+
+  private async registerTaskQuestions(questions: Array<any>, taskId: number) {
+    let createQuestionService = new CreateQuestionService();
+
+    for (let question of questions) {
+      await createQuestionService.execute(question.title, question.alternative1, question.alternative2, question.alternative3, question.alternative4, taskId, question.correctAlternative, question.level);
     }
   }
 }
