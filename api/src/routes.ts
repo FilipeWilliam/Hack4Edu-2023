@@ -23,6 +23,8 @@ import { ListRankingController } from "./routes/ranking/ListRankingController";
 import { ListTasksController } from "./routes/tasks/list/ListTasksController";
 import { UpdateSubjectController } from "./routes/subjects/update/UpdateSubjectController";
 import { ReadSubjectsController } from "./routes/subjects/read/ReadSubjectsController";
+import { CreateGptQuestionController } from "./routes/gptQuestions/create/CreateGptQuestionController";
+import { ListGptQuestionsController } from "./routes/gptQuestions/list/ListGptQuestionsController";
 
 const router = Router();
 
@@ -66,6 +68,10 @@ router.get("/user-tasks", new ListUserTasksController().handle);
 
 //UserTaskQuestions
 router.post("/user-task/:userTaskId/questions", new CreateUserTaskQuestionsController().handle);
+
+//GPTQuestions
+router.get("/gpt-questions", new ListGptQuestionsController().handle);
+router.post("/gpt-questions", new CreateGptQuestionController().handle);
 
 //Ranking
 router.get("/ranking", new ListRankingController().handle);
