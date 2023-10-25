@@ -1,4 +1,4 @@
-![alt text]([(https://github.com/FilipeWilliam/Hack4Edu-2023/tree/master/docs/imagens/imagem.png)
+![alt text](https://github.com/FilipeWilliam/Hack4Edu-2023/tree/master/docs/imagens/imagem.png)
 
 # Hack4edu-2023
 
