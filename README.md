@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/FilipeWilliam/Hack4Edu-2023/blob/master/docs/imagens/imagem.png" width="350" title="hover text">
+  <img src="https://github.com/FilipeWilliam/Hack4Edu-2023/blob/master/docs/imagens/imagem.png" width="550" title="hover text">
             
 </p>
 
