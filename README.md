@@ -61,3 +61,9 @@ https://blog.kalatec.com.br/redes-neurais/
 * Mulheres Hackers
 * Solução social / inclusiva
 * Transferência tecnológica
+
+<br>
+
+# Vídeo de Apresentação / Youtube
+
+   https:// ....
