@@ -11,7 +11,7 @@
 			<v-spacer></v-spacer>
 		</v-layout>
 
-		<v-container v-else>
+		<v-container fluid v-else>
 			<v-card>
 				<v-card-title>Análise geral</v-card-title>
 				<v-card-text>
@@ -115,7 +115,8 @@
 						<v-divider></v-divider>
 
 						<v-card-text>Probabilidade de acerto ao sair 1 vez:
-							<v-chip :color="parseColor(userTask.focusOut.hit)">{{ parsePorcentage(userTask.focusOut.hit) }}%</v-chip>
+							<v-chip :color="parseColor(userTask.focusOut.hit)">{{ parsePorcentage(userTask.focusOut.hit)
+							}}%</v-chip>
 						</v-card-text>
 
 					</template>

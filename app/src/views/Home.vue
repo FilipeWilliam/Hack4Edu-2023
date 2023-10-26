@@ -4,7 +4,17 @@
 
     <v-spacer></v-spacer>
 
-    <v-btn @click="signOut">Sair</v-btn>
+    <v-layout>
+      <v-spacer></v-spacer>
+      <div>
+        <v-avatar color="#FFF">
+          <v-icon icon="mdi-account-circle"></v-icon>
+        </v-avatar>
+
+        {{ appStore.appUser.name }}
+      </div>
+      <v-btn @click="signOut">Sair</v-btn>
+    </v-layout>
   </v-app-bar>
 
   <v-navigation-drawer color="secondary" v-model="drawer.open" permanent :rail="drawer.rail">

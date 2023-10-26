@@ -76,8 +76,6 @@ const listTasks = () => {
 }
 
 const getHeadearsName = (item: any) => {
-
-  console.log(item)
   if ((appStore as any).type === userTypes.Student) {
     return {
       periodStart: item.task.periodStart,

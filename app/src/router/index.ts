@@ -104,6 +104,18 @@ const routes = [
               ],
             }
           },
+          {
+            path: '/subjects/:id',
+            name: 'Subject',
+            component: () => import(/* webpackChunkName: "question" */ '@/views/Students.vue'),
+            meta: {
+              menuIcon: 'mdi-account-group',
+              menuLabel: 'Estudantes',
+              permission: [
+                userTypes.Teacher,
+              ],
+            }
+          }
         ]
       },
     ],
