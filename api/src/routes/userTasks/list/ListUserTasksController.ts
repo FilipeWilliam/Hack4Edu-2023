@@ -4,11 +4,11 @@ import { ListUserTasksService } from './ListUserTasksService';
 
 export class ListUserTasksController {
   async handle(req: Request, res: Response) {
-    const {userId} = req.query;
+    const {userId, subjectId} = req.query;
     const service = new ListUserTasksService();
 
     try {
-      const result = await service.execute(+userId);
+      const result = await service.execute(userId, subjectId);
 
       return handleResult(res, result);
     } catch (err) {

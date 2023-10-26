@@ -13,8 +13,12 @@ export class GroupFocusOutByHitService {
 			}
 
 			if (subjectId !== undefined) {
-				where.task = {};
-				where.task.subjectId = +subjectId;
+				if (where.userTask === undefined) {
+					where.userTask = {};
+				}
+
+				where.userTask.task = {};
+				where.userTask.task.subjectId = +subjectId;
 			}
 
 			let allQuestions = await prismaClient.userTaskQuestions.findMany({
