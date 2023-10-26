@@ -94,6 +94,16 @@ const routes = [
               ],
             }
           },
+          {
+            path: '/tasks/:id/analyse',
+            name: 'UserTaskAnalyse',
+            component: () => import(/* webpackChunkName: "question" */ '@/views/AnalyseTask.vue'),
+            meta: {
+              permission: [
+                userTypes.Teacher,
+              ],
+            }
+          },
         ]
       },
     ],

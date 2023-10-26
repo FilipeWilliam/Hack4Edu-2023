@@ -17,6 +17,7 @@
 
       <template #item.actions="{ item }">
         <v-btn small flat icon="mdi-pencil" @click="$router.push('/tasks/' + item.id)"></v-btn>
+        <v-btn small flat icon="mdi-magnify" @click="$router.push('/tasks/' + item.id + '/analyse')"></v-btn>
       </template>
     </AppDataTable>
 
