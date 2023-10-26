@@ -1,11 +1,11 @@
 import { Request, Response } from 'express';
-import { GroupTimeByLevelService } from './GroupTimeByLevelService';
+import { GroupFocusOutByHitService } from './GroupFocusOutByHitService';
 import { handleErrorDefault, handleResult } from '@/utils';
 
-export class GroupTimeByLevelController {
+export class GroupFocusOutByHitController {
 	async handle(req: Request, res: Response) {
 		const { subjectId, userId } = req.query;
-    const service = new GroupTimeByLevelService();
+    const service = new GroupFocusOutByHitService();
 
     try {
       const result = await service.execute(subjectId, userId);

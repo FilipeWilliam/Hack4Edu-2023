@@ -2,21 +2,27 @@ import prismaClient from "@/prisma";
 import { NeuralNetwork } from 'brain.js';
 
 export class GroupTimeByLevelService {
-	async execute(subjectId: number) {
+	async execute(subjectId?: number, userId?: number) {
 		try {
 			let neuralNetworkTrainingData = [];
-			let maxSeconds = 100;
+			let maxSeconds = 90;
+			let where: any = {};
+
+			if (userId !== undefined) {
+				where.userTask = {};
+				where.userTask.userId = +userId;
+			}
+
+			if (subjectId !== undefined) {
+				where.task = {};
+				where.task.subjectId = +subjectId;
+			}
 
 			let allQuestions = await prismaClient.userTaskQuestions.findMany({
-				where: {
-					question: {
-						task: {
-							subjectId
-						}
-					}
-				},
+				where,
 				include: {
-					question: true
+					question: true,
+					userTask: true
 				}
 			});
 
@@ -30,7 +36,11 @@ export class GroupTimeByLevelService {
 					output: { seconds }
 				})
 			}
-			
+
+			if (neuralNetworkTrainingData.length === 0) {
+				return {message: 'Não há dados disponíveis.'}
+			}
+
 			const net = new NeuralNetwork();
 			net.train(neuralNetworkTrainingData);
 			

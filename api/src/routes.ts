@@ -28,6 +28,7 @@ import { ListGptQuestionsController } from "./routes/gptQuestions/list/ListGptQu
 import { GroupHitByLevelController } from "./routes/analyse/GroupHitByLevel/GroupHitByLevelController";
 import { GroupTimeByLevelController } from "./routes/analyse/GroupTimeByLevel/GroupTimeByLevelController";
 import { GroupHitByTimeController } from "./routes/analyse/GroupHitByTime/GroupHitByTimeController";
+import { GroupFocusOutByHitController } from "./routes/analyse/GroupFocusOutByHit/GroupFocusOutByHitController";
 
 const router = Router();
 
@@ -80,6 +81,7 @@ router.post("/gpt-questions", new CreateGptQuestionController().handle);
 router.get('/group-hit-level', new GroupHitByLevelController().handle);
 router.get('/group-time-level', new GroupTimeByLevelController().handle);
 router.get('/group-hit-time', new GroupHitByTimeController().handle);
+router.get('/group-focusout-hit', new GroupFocusOutByHitController().handle);
 
 //Ranking
 router.get("/ranking", new ListRankingController().handle);

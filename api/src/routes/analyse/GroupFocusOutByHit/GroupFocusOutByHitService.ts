@@ -1,7 +1,7 @@
 import prismaClient from "@/prisma";
 import { NeuralNetwork } from 'brain.js';
 
-export class GroupHitByLevelService {
+export class GroupFocusOutByHitService {
 	async execute(subjectId?: number, userId?: number) {
 		try {
 			let neuralNetworkTrainingData = [];
@@ -35,22 +35,20 @@ export class GroupHitByLevelService {
 				}
 
 				neuralNetworkTrainingData.push({
-					input: { level: userTaskQuestion.question.level},
+					input: { focusOut: userTaskQuestion.focusOut },
 					output: { hit }
-				})
+				});
 			}
-			
+
 			if (neuralNetworkTrainingData.length === 0) {
 				return {message: 'Não há dados disponíveis.'}
 			}
-
+			
 			const net = new NeuralNetwork();
 			net.train(neuralNetworkTrainingData);
 			
 			return {
-				level1: net.run({ level: 1 }),
-				level2: net.run({ level: 2 }),
-				level3: net.run({ level: 3 }),
+				focusOut: net.run({ focusOut: 1 })
 			}
 		} catch (error) {
 			console.log(error);
