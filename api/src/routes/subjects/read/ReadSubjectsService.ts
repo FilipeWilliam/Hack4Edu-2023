@@ -7,6 +7,13 @@ export class ReadSubjectsService {
         where: {
           id,
         },
+        include: {
+          UserSubject: {
+            include: {
+              user: true
+            }
+          }
+        }
       });
 
       return { result };
