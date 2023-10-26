@@ -66,10 +66,6 @@ const headers = [
   },
 ]
 
-const moveToEdit = (item: any) => {
-  console.log(item);
-}
-
 const listTasks = () => {
   return new Promise((resolve, reject) => {
     taskStore.list()

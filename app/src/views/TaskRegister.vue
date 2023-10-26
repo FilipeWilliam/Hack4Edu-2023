@@ -18,14 +18,16 @@
 			</v-container>
 
 			<v-tabs v-model="tab">
-				<v-tab v-for="(item, index) in taskStore.registerTask.questions" :value="index">Questão {{ index + 1 }}</v-tab>
+				<v-tab v-for="(item, index) in taskStore.registerTask.questions" :value="index">Questão {{ index + 1
+				}}</v-tab>
 			</v-tabs>
 
 			<v-card-text>
 				<v-window v-model="tab">
 					<v-window-item v-for="(item, index) in taskStore.registerTask.questions" :value="index">
 						<v-container fluid class="pt-2 pb-0">
-							<v-text-field v-model="item.title" label="Pergunta" variant="outlined"></v-text-field>
+							<v-text-field v-model="item.title" label="Pergunta" variant="outlined" append-icon="mdi-robot"
+								@click:append="openDialogGPT"></v-text-field>
 
 							<v-radio-group class="alternatives__wrapper" v-model="item.correctAlternative">
 								<v-radio :value="1">
@@ -80,9 +82,12 @@
 			</v-card-text>
 		</v-form>
 	</v-card>
+
+	<DialogGPTQuestion ref="dialogGpt" />
 </template>
   
 <script lang="ts" setup>
+import DialogGPTQuestion from '@/components/DialogGPTQuestion.vue';
 import { useTaskStore } from '@/store/task';
 import { catchErrorDefault, handleAPISuccess } from '@/utils';
 import { ref } from 'vue';
@@ -91,6 +96,7 @@ import { useRoute } from 'vue-router';
 const currentTaskId = useRoute().params.id;
 const taskStore = useTaskStore();
 const tab = ref(null);
+const dialogGpt = ref(null);
 
 const submit = () => {
 	taskStore.create(taskStore.registerTask)
@@ -112,9 +118,6 @@ const addQuestion = () => {
 
 const readTask = () => {
 	taskStore.read(currentTaskId)
-		.then((response) => {
-			console.log(response)
-		})
 		.catch(catchErrorDefault);
 }
 
@@ -134,11 +137,14 @@ const clearCurrentRegister = () => {
 	}
 }
 
+const openDialogGPT = () => {
+	(dialogGpt.value! as any).openDialog()
+}
+
 clearCurrentRegister();
 if (currentTaskId !== undefined) {
 	readTask();
 }
-
 </script>
   
 <style>
