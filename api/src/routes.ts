@@ -25,7 +25,8 @@ import { UpdateSubjectController } from "./routes/subjects/update/UpdateSubjectC
 import { ReadSubjectsController } from "./routes/subjects/read/ReadSubjectsController";
 import { CreateGptQuestionController } from "./routes/gptQuestions/create/CreateGptQuestionController";
 import { ListGptQuestionsController } from "./routes/gptQuestions/list/ListGptQuestionsController";
-import { GroupAnalyseByLevelController } from "./routes/analyse/GroupAnalyseByDifficult/GroupAnalyseByLevelController";
+import { GroupHitByLevelController } from "./routes/analyse/GroupHitByLevel/GroupHitByLevelController";
+import { GroupTimeByLevelController } from "./routes/analyse/GroupTimeByLevel/GroupTimeByLevelController";
 
 const router = Router();
 
@@ -75,7 +76,8 @@ router.get("/gpt-questions", new ListGptQuestionsController().handle);
 router.post("/gpt-questions", new CreateGptQuestionController().handle);
 
 //Analyse
-router.get('/group-level', new GroupAnalyseByLevelController().handle);
+router.get('/group-hit-level', new GroupHitByLevelController().handle);
+router.get('/group-time-level', new GroupTimeByLevelController().handle);
 
 //Ranking
 router.get("/ranking", new ListRankingController().handle);
