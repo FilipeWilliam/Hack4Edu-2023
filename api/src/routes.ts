@@ -25,6 +25,7 @@ import { UpdateSubjectController } from "./routes/subjects/update/UpdateSubjectC
 import { ReadSubjectsController } from "./routes/subjects/read/ReadSubjectsController";
 import { CreateGptQuestionController } from "./routes/gptQuestions/create/CreateGptQuestionController";
 import { ListGptQuestionsController } from "./routes/gptQuestions/list/ListGptQuestionsController";
+import { GroupAnalyseByLevelController } from "./routes/analyse/GroupAnalyseByDifficult/GroupAnalyseByLevelController";
 
 const router = Router();
 
@@ -72,6 +73,9 @@ router.post("/user-task/:userTaskId/questions", new CreateUserTaskQuestionsContr
 //GPTQuestions
 router.get("/gpt-questions", new ListGptQuestionsController().handle);
 router.post("/gpt-questions", new CreateGptQuestionController().handle);
+
+//Analyse
+router.get('/group-level', new GroupAnalyseByLevelController().handle);
 
 //Ranking
 router.get("/ranking", new ListRankingController().handle);
