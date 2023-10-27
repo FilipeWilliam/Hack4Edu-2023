@@ -66,4 +66,4 @@ https://blog.kalatec.com.br/redes-neurais/
 
 # Vídeo de Apresentação / Youtube
 
-   https:// ....
+https://youtu.be/onKt_I7ixgk
